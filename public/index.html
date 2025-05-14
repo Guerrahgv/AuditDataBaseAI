@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="reset.css" />
+    <title>AuditDB</title>
+  </head>
+  <body>
+    <div id="root">
+      <div class="container">
+        <!-- IZQUIERDA: form de la Auditoría -->
+        <section class="db-form">
+          <h2>Database Connection</h2>
+          <div class="form-group">
+            <label for="db-engine">Gestor de BD</label>
+            <select id="db-engine">
+              <option>MySQL</option>
+              <option>PostgreSQL</option>
+              <option>SQL Server</option>
+              <option>Oracle</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="db-port">Puerto</label>
+            <input id="db-port" type="text" value="3306" />
+          </div>
+          <div class="form-group">
+            <label for="db-name">Nombre de la BD</label>
+            <input
+              id="db-name"
+              type="text"
+              placeholder="Ingrese el nombre de la base de datos"
+            />
+          </div>
+          <div class="form-group">
+            <label for="db-user">Usuario</label>
+            <input id="db-user" type="text" placeholder="Nombre de usuario" />
+          </div>
+          <div class="form-group">
+            <label for="db-pass">Contraseña</label>
+            <input id="db-pass" type="password" placeholder="Contraseña" />
+          </div>
+          <button class="btn-connect">Conectar a la Base de Datos →</button>
+        </section>
+        <!-- DERECHA: Configuración de la Auditoría -->
+        <aside class="audit-config">
+          <h2>Configuración de la Auditoría</h2>
+          <p class="subtitle">
+            Seleccione los objetivos de la auditoría para el análisis de la base
+            de datos:
+          </p>
+
+          <div class="checkbox-item">
+            <div class="icon">
+              <img src="./assets/proteger.png" alt="Icono de auditoría" />
+            </div>
+            <div>
+              <label><input type="checkbox" /> Seguridad</label>
+              <p>
+                Verificar contraseñas, permisos y políticas de acceso a la base
+                de datos.
+              </p>
+            </div>
+          </div>
+
+          <div class="checkbox-item">
+            <div class="icon">
+              <img src="./assets/rendimiento.png" alt="Icono de auditoría" />
+            </div>
+            <div>
+              <label><input type="checkbox" /> Rendimiento</label>
+              <p>
+                Analizar índices existentes y consultas lentas para optimizar el
+                tiempo de respuesta.
+              </p>
+            </div>
+          </div>
+
+          <div class="checkbox-item">
+            <div class="icon">
+              <img src="./assets/db.png" alt="Icono de auditoría" />
+            </div>
+            <div>
+              <label><input type="checkbox" /> Normalización</label>
+              <p>
+                Evaluar el cumplimiento de las formas normales (1FN, 2FN, 3FN)
+                para evitar redundancias.
+              </p>
+            </div>
+          </div>
+
+          <div class="checkbox-item">
+            <div class="icon">
+              <img src="./assets/cumplimiento.png" alt="Icono de auditoría" />
+            </div>
+            <div>
+              <label><input type="checkbox" /> Cumplimiento</label>
+              <p>
+                Verificar si la base de datos cumple estándares como ISO 27001 o
+                PCI DSS.
+              </p>
+            </div>
+          </div>
+
+          <div class="note">
+            <strong>Nota:</strong> Los resultados de la auditoría proporcionarán
+            recomendaciones para mejorar la seguridad y el rendimiento de su
+            base de datos basándose en las opciones seleccionadas.
+          </div>
+        </aside>
+      </div>
+
+      <!-- RES: RESPUESTA de la Auditoría -->
+      <div class="db-response">
+        <h3>Respuesta de la Base de Datos</h3>
+        <pre>La respuesta de la base de datos se mostrará aquí...</pre>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

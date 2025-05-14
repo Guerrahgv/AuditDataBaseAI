@@ -1,0 +1,149 @@
+/* ------------- CONTENEDOR PRINCIPAL ------------- */
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  font-family: sans-serif;
+}
+
+/* ------------- FORMULARIO IZQUIERDA ------------- */
+.db-form {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.db-form h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-connect {
+  display: inline-block;
+  background: #2563eb;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-connect:hover {
+  background: #1e4db7;
+}
+
+/* ------------- RESPUESTA DE LA BD ------------- */
+.db-response {
+  width: 60%;
+  margin-top: 1.5rem;
+}
+
+.db-response h3 {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.db-response pre {
+  background: #1e293b;
+  color: #cbd5e1;
+  padding: 1rem;
+  border-radius: 4px;
+  min-height: 100px;
+  font-family: monospace;
+}
+
+/* ------------- PANEL DERECHA ------------- */
+.audit-config {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.audit-config h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.audit-config p.subtitle {
+  margin-bottom: 1rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.checkbox-item .icon {
+  width: 24px;
+  height: 24px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  margin-right: 0.8rem;
+  /* aquí podrías poner un SVG de fondo o usar una fuente de iconos */
+}
+
+.checkbox-item label {
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox-item p {
+  margin: 0.3rem 0 0 1.8rem;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* ------------- NOTA ------------- */
+.note {
+  background: #f0f9ff;
+  border-left: 4px solid #60a5fa;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #334155;
+  border-radius: 0 4px 4px 0;
+}
+
+
+.icon img {
+  width: 24px;
+  height: 24px;
+  background-color: white;
+}
