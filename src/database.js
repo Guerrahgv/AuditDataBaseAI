@@ -1,1 +1,0 @@
-//Conexión a BD (MySQL/PostgreSQL/etc)

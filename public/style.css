@@ -60,7 +60,7 @@
 }
 
 .btn-connect:hover {
-  background: #1e4db7;
+  background: #1eb732;
 }
 
 /* ------------- RESPUESTA DE LA BD ------------- */
@@ -147,3 +147,47 @@
   height: 24px;
   background-color: white;
 }
+.btn-center{
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+
+}
+
+.test:hover{
+  background-color: green;
+} 
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.toast {
+  min-width: 250px;
+  margin-bottom: 10px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  opacity: 0.9;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.toast-success {
+  background-color: #4caf50; /* verde */
+}
+
+.toast-error {
+  background-color: #f44336; /* rojo */
+}
+
+.toast:hover {
+  opacity: 1;
+}
+
+
