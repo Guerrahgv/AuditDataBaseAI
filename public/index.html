@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
     <title>AuditDB</title>
   </head>
   <body>
+    <nav>
+      <img src="./assets/logo.png" alt="">
+  <h1>Audit v1</h1>
+</nav>
     <div class="notification" id="toastContainer"><p></p></div>
     <div id="root">
       <div class="container">
@@ -18,7 +23,7 @@
               <label for="db-engine">Gestor de BD</label>
               <select id="db-engine" name="db-engine" required>
                 <option value="">-- Selecciona --</option>
-                <option value="mysql">MySQL</option>
+                <option value="mysql" selected>MySQL</option>
                 <option value="postgresql">PostgreSQL</option>
                 <option value="sqlserver">SQL Server</option>
                 <option value="oracle">Oracle</option>
@@ -146,10 +151,8 @@
       </div>
 
       <!-- RES: RESPUESTA de la Auditoría -->
-      <div class="db-response">
-        <h3>Respuesta de la Base de Datos</h3>
-        <pre>La respuesta de la base de datos se mostrará aquí...</pre>
-      </div>
+      <div class="db-response" id="db-response"></div>
+
     </div>
 
     <script src="script.js"></script>

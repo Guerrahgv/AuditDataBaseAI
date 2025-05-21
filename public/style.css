@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
 }
 
 .container {
@@ -22,7 +21,7 @@
   background: #fff;
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .db-form h2 {
@@ -63,33 +62,12 @@
   background: #1eb732;
 }
 
-/* ------------- RESPUESTA DE LA BD ------------- */
-.db-response {
-  width: 60%;
-  margin-top: 1.5rem;
-}
-
-.db-response h3 {
-  display: flex;
-  align-items: center;
-  font-size: 1.2rem;
-}
-
-.db-response pre {
-  background: #1e293b;
-  color: #cbd5e1;
-  padding: 1rem;
-  border-radius: 4px;
-  min-height: 100px;
-  font-family: monospace;
-}
-
 /* ------------- PANEL DERECHA ------------- */
 .audit-config {
   background: #fff;
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .audit-config h2 {
@@ -141,22 +119,20 @@
   border-radius: 0 4px 4px 0;
 }
 
-
 .icon img {
   width: 24px;
   height: 24px;
   background-color: white;
 }
-.btn-center{
+.btn-center {
   display: flex;
   justify-content: space-around;
-  align-items:center;
-
+  align-items: center;
 }
 
-.test:hover{
+.test:hover {
   background-color: green;
-} 
+}
 
 .notification {
   position: fixed;
@@ -172,7 +148,7 @@
   border-radius: 8px;
   color: white;
   font-weight: bold;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   opacity: 0.9;
   cursor: pointer;
   transition: opacity 0.3s ease;
@@ -190,4 +166,128 @@
   opacity: 1;
 }
 
+/*----Responnse dataB---*/
+.acordeon {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
 
+.acordeon-header {
+  background-color: #e9f1ff; /* color más vivo */
+  padding: 14px 20px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #d0e1f9;
+  transition: all 0.2s ease;
+  border-left: 4px solid transparent;
+}
+
+.acordeon-header:hover {
+  background-color: #d6e9ff; /* hover más vivo */
+  border-left: 4px solid #007bff; /* azul estilo botón */
+}
+
+.acordeon-content {
+  display: none;
+  background-color: #fdfdfd;
+  padding: 16px 20px;
+  border-top: 1px solid #e0e0e0;
+  font-size: 15px;
+}
+
+.acordeon-content.active {
+  display: block;
+}
+
+.acordeon-header.ok {
+  color: #2e7d32;
+}
+.acordeon-header.warning {
+  color: #e65100;
+}
+.acordeon-header.error {
+  color: #c62828;
+}
+
+pre {
+  background-color: #f8faff;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin-top: 10px;
+  border: 1px solid #d0e1f9;
+}
+
+h3 {
+  margin: 40px auto 10px;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 10px;
+  border-left: 5px solid #007bff;
+  color: #333;
+  background-color: #f4f9ff;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.db-response {
+  display: flex;
+  gap: 50px;
+  font-family: sans-serif;
+}
+ 
+/*--nav--*/
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: #f0f4ff;
+  padding: 1rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+nav h1 {
+  color: #007bff;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+nav img {
+  width: 45px;
+  margin-right: 1rem;
+}
+
+
+/*--boton imprimir--*/
+
+#print-report-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: background 0.3s;
+}
+
+#print-report-btn:hover {
+  background-color: #0056b3;
+}
+
+@media print {
+  #print-report-btn {
+    display: none;
+  }
+}
