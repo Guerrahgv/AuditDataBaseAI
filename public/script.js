@@ -16,7 +16,10 @@ testBtn.addEventListener("click", async function () {
     dbPass,
   };
 
-  try {
+  if(!dbEngine || !dbPort || !dbName || !dbUser || !dbPass){
+     showToast("Llena los campos para continuar", "error");
+  }else{
+    try {
     const response = await fetch("/api/test-connection", {
       method: "POST",
       headers: {
@@ -33,11 +36,17 @@ testBtn.addEventListener("click", async function () {
       showToast(result.message, "error");
     }
   } catch (error) {
-    showToast("Error al intentar conectar: " + error.message, "error");
+    showToast("Error al intentar conectar: Revisa la config" + error.message, "error");
   }
+
+
+
+  }
+
+  
 });
 
-function showToast(message, type = "success", duration = 4000) {
+function showToast(message, type = "success", duration = 3000) {
   const container = document.getElementById("toastContainer");
 
   const toast = document.createElement("div");
@@ -71,6 +80,10 @@ form.addEventListener("submit", async function (event) {
   const checked = Array.from(checkboxes)
     .filter((chk) => chk.checked)
     .map((chk) => chk.value);
+  if (checked.length === 0) {
+    showToast("Selecciona al menos un objetivo de auditoría", "error");
+    return;
+  }
 
   const data = {
     dbEngine,
@@ -170,7 +183,7 @@ function renderAcordeon(auditorias) {
     contenedor.appendChild(grupoWrapper);
   }
 
-   //BotonImprimir();
+    renderAnalisisAi()
 
 }
 
@@ -178,7 +191,7 @@ function toggleAcordeon(element) {
   const content = element.nextElementSibling;
   const isActive = content.classList.contains("active");
 
-  // Cierra todos los contenidos abiertos
+ 
   document
     .querySelectorAll(".acordeon-content")
     .forEach((c) => c.classList.remove("active"));
@@ -188,14 +201,108 @@ function toggleAcordeon(element) {
   }
 }
 
-function BotonImprimir() {
- 
-  if (document.getElementById("print-report-btn")) return;
+async function renderAnalisisAi() {
+  const contenedor = document.getElementById("ai-response");
+  const imgAI = `<img id="ai-img" class="ai-img" src="./assets/robot.gif" alt="Image" style="width:100px; cursor:pointer;">`;
+  contenedor.innerHTML = imgAI;
 
-  const boton = document.createElement("button");
-  boton.id = "print-report-btn";
-  boton.innerHTML = "🖨️ Imprimir reporte";
-  boton.onclick = () => window.print();
+  let popup = document.getElementById('popup');
+  let popupContent;
 
-  document.body.appendChild(boton);
+  if (!popup) {
+    popup = document.createElement('div');
+    popup.id = 'popup';
+    popup.style.cssText = `
+      display:none;
+      position:fixed;
+      top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.5);
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+    `;
+
+    popupContent = document.createElement('div');
+    popupContent.style.cssText = `
+      background:#fff;
+      padding:20px;
+      border-radius:8px;
+      width:300px;
+      text-align:center;
+      box-shadow:0 2px 10px rgba(0,0,0,0.3);
+    `;
+
+    popup.appendChild(popupContent);
+    document.body.appendChild(popup);
+
+    // Cerrar popup al hacer click fuera
+    popup.addEventListener('click', e => {
+      if (e.target === popup) popup.style.display = 'none';
+    });
+  } else {
+    popupContent = popup.firstChild;
+  }
+
+  // Evento para abrir popup
+  const aiImg = document.getElementById('ai-img');
+  aiImg.onclick = () => {
+    popup.style.display = 'flex';
+  };
+
+
+  popupContent.innerHTML = `
+    <h2>¡Hola!</h2>
+    <p>Mis recomendaciones están cargando...</p>
+    <button id="close-popup-btn" style="
+      background:#f44336; color:#fff; border:none; padding:8px 16px; 
+      margin-top:15px; cursor:pointer; border-radius:4px;
+    ">Cerrar</button>
+  `;
+
+  // Agregar evento cerrar al botón
+  popupContent.querySelector('#close-popup-btn').onclick = () => {
+    popup.style.display = 'none';
+  };
+
+  try {
+    const response = await fetch('/api/auditAi', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+
+    const data = await response.json();
+
+    // Actualizar contenido con resultado
+    popupContent.innerHTML = `
+      <h2>¡Hola Auditor!</h2>
+      <p>Mis recomendaciones son las siguientes:</p>
+      <pre style="text-align:left; white-space: pre-wrap;">${data.analisis}</pre>
+      <button id="close-popup-btn" style="
+        background:#f44336; color:#fff; border:none; padding:8px 16px; 
+        margin-top:15px; cursor:pointer; border-radius:4px;
+      ">Cerrar</button>
+    `;
+
+    // Re-agregar evento cerrar
+    popupContent.querySelector('#close-popup-btn').onclick = () => {
+      popup.style.display = 'none';
+    };
+
+  } catch (error) {
+    popupContent.innerHTML = `
+      <h2>¡Hola Auditor!</h2>
+      <p>Error al cargar análisis: ${error.message}</p>
+      <button id="close-popup-btn" style="
+        background:#f44336; color:#fff; border:none; padding:8px 16px; 
+        margin-top:15px; cursor:pointer; border-radius:4px;
+      ">Cerrar</button>
+    `;
+    popupContent.querySelector('#close-popup-btn').onclick = () => {
+      popup.style.display = 'none';
+    };
+  }
 }
+
+

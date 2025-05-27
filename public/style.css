@@ -291,3 +291,16 @@ nav img {
     display: none;
   }
 }
+
+/*--boton de Ai-Response--*/
+.ai-response{
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+}
+
+.ai-img {
+  width: 60px;
+  margin-right: 10px;
+}
